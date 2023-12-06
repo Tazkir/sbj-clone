@@ -78,15 +78,14 @@ function Sidebar() {
                   </div>
                   <DropdownMenuSeparator className="bg-zinc-500/30" />
                   {l.section.map((s) => (
-                    <DropdownMenuItem
-                      key={s.id}
-                      disabled={section === `${s.section}`}
-                      className="gap-2"
-                    >
-                      <Link href={`/section/${s.section}`}>
+                    <Link key={s.id} href={`/section/${s.section}`}>
+                      <DropdownMenuItem
+                        className="cursor-pointer"
+                        disabled={section === `${s.section}`}
+                      >
                         Section {s.section}
-                      </Link>
-                    </DropdownMenuItem>
+                      </DropdownMenuItem>
+                    </Link>
                   ))}
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
