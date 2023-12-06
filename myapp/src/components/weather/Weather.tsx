@@ -3,8 +3,8 @@ import { WeatherIcons } from './WeatherIcons';
 
 export default async function Weather() {
   const params = {
-    latitude: 3.0333,
-    longitude: 101.7167,
+    latitude: 3.1412,
+    longitude: 101.6865,
     current: ['temperature_2m', 'is_day', 'weather_code'],
     timezone: 'auto',
     forecast_days: 1,
