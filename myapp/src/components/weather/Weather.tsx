@@ -5,12 +5,10 @@ export default async function Weather() {
   const params = {
     latitude: 3.0333,
     longitude: 101.7167,
-    current: ['is_day', 'weather_code'],
-    hourly: 'precipitation',
+    current: ['temperature_2m', 'is_day', 'weather_code'],
     timezone: 'auto',
     forecast_days: 1,
   };
-
   const url = 'https://api.open-meteo.com/v1/forecast';
   const responses = await fetchWeatherApi(url, params);
 
@@ -29,39 +27,25 @@ export default async function Weather() {
   const longitude = response.longitude();
 
   const current = response.current()!;
-  const hourly = response.hourly()!;
 
   // Note: The order of weather variables in the URL query and the indices below need to match!
   const weatherData = {
     current: {
       time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
-      isDay: current.variables(0)!.value(),
-      weatherCode: current.variables(1)!.value(),
-    },
-    hourly: {
-      time: range(
-        Number(hourly.time()),
-        Number(hourly.timeEnd()),
-        hourly.interval()
-      ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
-      precipitation: hourly.variables(0)!.valuesArray()!,
+      temperature2m: current.variables(0)!.value(),
+      isDay: current.variables(1)!.value(),
+      weatherCode: current.variables(2)!.value(),
     },
   };
-
-  // // `weatherData` now contains a simple structure with arrays for datetime and weather data
-  //   for (let i = 0; i < weatherData.hourly.time.length; i++) {
-  //     console.log(
-  //       weatherData.hourly.time[i].toISOString(),
-  //       weatherData.hourly.precipitation[i]
-  //     );
-  //   }
 
   const weatherCode = weatherData.current.weatherCode;
   const weatherIcon = WeatherIcons({ code: weatherCode.toString() });
 
   return (
-    <div className="flex justify-center items-center gap-3">
-      <h1>{weatherIcon}</h1>
+    <div className="flex justify-center items-center">
+      <h1 className="text-sm">
+        Weather: {weatherIcon} {weatherData.current.temperature2m.toFixed(0)} °C
+      </h1>
     </div>
   );
 }
