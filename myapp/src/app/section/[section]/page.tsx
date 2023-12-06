@@ -1,3 +1,4 @@
+import { Skeleton } from '@/components/ui/skeleton';
 import Section from '@/components/view/Section';
 import { Url } from '@/lib/Url';
 import { Metadata } from 'next';

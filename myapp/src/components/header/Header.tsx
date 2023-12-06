@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/logo.png';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import Sidebar from '../sidebar/Sidebar';
+import Nav from '../nav/Nav';
 
 function Header() {
   return (
@@ -21,7 +21,7 @@ function Header() {
       </div>
 
       <div className="flex items-center justify-center gap-3">
-        <Sidebar />
+        <Nav />
         <ThemeSwitcher />
       </div>
     </header>

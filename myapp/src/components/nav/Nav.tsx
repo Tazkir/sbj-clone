@@ -24,7 +24,7 @@ interface Params {
   [key: string]: string;
 }
 
-function Sidebar() {
+function Nav() {
   const params = useParams<Params>();
   const { section } = params;
 
@@ -47,7 +47,7 @@ function Sidebar() {
   if (!level) {
     return (
       <>
-        <div className="cursor-pointer w-7 h-7 flex justify-center items-center border border-black/40 dark:border-white/40 rounded-xl shadow shadow-black/70 dark:shadow-white/70">
+        <div className="animate-pulse cursor-pointer w-7 h-7 flex justify-center items-center border border-black/40 dark:border-white/40 rounded-xl shadow shadow-black/70 dark:shadow-white/70">
           <Menu className="h-4 w-4 text-foreground" />
         </div>
       </>
@@ -99,4 +99,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default Nav;

@@ -105,7 +105,7 @@ function SeatSelection() {
           <Button
             type="submit"
             disabled={!form?.getValues().section}
-            className="px-5 py-2 bg-foreground text-background hover:bg-primary hover:text-foreground border border-foreground transition-all rounded-md font-semibold"
+            className="px-5 py-2 bg-background text-foreground hover:bg-foreground hover:text-background border border-foreground transition-all rounded-md font-semibold"
           >
             Search
           </Button>

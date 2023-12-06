@@ -2,7 +2,7 @@ import SeatSelection from './SeatSelection';
 
 function Main() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center py-20 gap-5">
+    <div className="w-full h-full flex flex-col items-center justify-center py-20 max-md:py-5 gap-5">
       <div className="flex flex-col w-2/3 gap-4 justify-center items-center text-center">
         <h1 className="text-6xl max-md:text-5xl tracking-tight font-bold">
           Curious what is like your seat view in Stadium Bukit Jalil?

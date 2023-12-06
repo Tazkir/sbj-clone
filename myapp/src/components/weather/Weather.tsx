@@ -42,10 +42,13 @@ export default async function Weather() {
   const weatherIcon = WeatherIcons({ code: weatherCode.toString() });
 
   return (
-    <div className="flex justify-center items-center">
-      <h1 className="text-sm">
-        Weather: {weatherIcon} {weatherData.current.temperature2m.toFixed(0)} °C
+    <div className="flex justify-center items-center gap-1 text-sm">
+      <h1 className="px-2 py-1 font-semibold rounded-full bg-foreground text-background shadow-md">
+        Weather: {weatherIcon}
       </h1>
+      <p className="px-2 py-1 font-semibold rounded-full bg-foreground text-background shadow-md">
+        {weatherData.current.temperature2m.toFixed(0)} °C
+      </p>
     </div>
   );
 }
