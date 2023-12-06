@@ -3,7 +3,6 @@ import Link from 'next/link';
 import logo from '../../../public/logo.png';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import Sidebar from '../sidebar/Sidebar';
-import Weather from '../weather/Weather';
 
 function Header() {
   return (
@@ -20,7 +19,7 @@ function Header() {
           />
         </Link>
       </div>
-      <Weather />
+
       <div className="flex items-center justify-center gap-3">
         <Sidebar />
         <ThemeSwitcher />

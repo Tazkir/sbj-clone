@@ -9,7 +9,7 @@ export const GET = async () => {
 
     if (!level || level.length === 0) {
       // If no artist is found, return a 404 response
-      return new NextResponse(JSON.stringify({ message: 'artists not found' }));
+      return new NextResponse(JSON.stringify({ message: 'level not found' }));
     }
 
     return new NextResponse(JSON.stringify(level));

@@ -14,9 +14,9 @@ import {
 
 import Link from 'next/link';
 import { Locate, Menu } from 'lucide-react';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { LevelsProps } from '@/lib/data';
+import { LevelsProps, SectionProps } from '@/lib/data';
 import { getLevel } from '../actions/Actions';
 
 interface Params {
@@ -28,14 +28,14 @@ function Sidebar() {
   const params = useParams<Params>();
   const { section } = params;
 
-  const [level, serLevel] = useState<LevelsProps[] | null>(null);
+  const [level, setLevel] = useState<LevelsProps[] | null>(null);
 
   useEffect(() => {
     const fetchLevel = async () => {
       try {
         const data = await getLevel();
 
-        serLevel(data);
+        setLevel(data);
       } catch (error) {
         console.error('Error fetching albums:', error);
       }
@@ -77,16 +77,18 @@ function Sidebar() {
                     </div>
                   </div>
                   <DropdownMenuSeparator className="bg-zinc-500/30" />
-                  {l.section.map((s) => (
-                    <Link key={s.id} href={`/section/${s.section}`}>
-                      <DropdownMenuItem
-                        className="cursor-pointer"
-                        disabled={section === `${s.section}`}
-                      >
-                        Section {s.section}
-                      </DropdownMenuItem>
-                    </Link>
-                  ))}
+                  {l.section
+                    .sort((a: SectionProps, b: SectionProps) => a.id - b.id)
+                    .map((s) => (
+                      <Link key={s.id} href={`/section/${s.section}`}>
+                        <DropdownMenuItem
+                          className="cursor-pointer"
+                          disabled={section === `${s.section}`}
+                        >
+                          Section {s.section}
+                        </DropdownMenuItem>
+                      </Link>
+                    ))}
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
