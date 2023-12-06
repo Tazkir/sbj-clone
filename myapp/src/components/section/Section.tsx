@@ -76,7 +76,6 @@ function Section() {
               <DialogTrigger asChild className="bg-foreground/30 rounded-xl">
                 <Image
                   fill
-                  quality={100}
                   alt={`View stadium bukit jalil level ${seats[0].level} - section ${seats[0].section}`}
                   src={`/image/seats/${item}`}
                   className="w-full h-auto object-cover rounded-lg shadow-lg cursor-pointer"
@@ -108,7 +107,6 @@ function Section() {
                       <Image
                         width={1000}
                         height={1000}
-                        quality={100}
                         alt={`View stadium bukit jalil level ${seats[0].level} - section ${seats[0].section}`}
                         src={`/image/seats/${item}`}
                         className="object-contain cursor-pointer w-full h-full"

@@ -18,6 +18,7 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { LevelsProps, SectionProps } from '@/lib/data';
 import { getLevel } from '../actions/Actions';
+import { ScrollArea } from '../ui/scroll-area';
 
 interface Params {
   section: string;
@@ -77,18 +78,37 @@ function Nav() {
                     </div>
                   </div>
                   <DropdownMenuSeparator className="bg-zinc-500/30" />
-                  {l.section
-                    .sort((a: SectionProps, b: SectionProps) => a.id - b.id)
-                    .map((s) => (
-                      <Link key={s.id} href={`/section/${s.section}`}>
-                        <DropdownMenuItem
-                          className="cursor-pointer"
-                          disabled={section === `${s.section}`}
-                        >
-                          Section {s.section}
-                        </DropdownMenuItem>
-                      </Link>
-                    ))}
+                  <ScrollArea className="h-72 w-32 rounded-md">
+                    {l.section.length > 0 ? (
+                      <>
+                        {l.section
+                          .sort(
+                            (a: SectionProps, b: SectionProps) => a.id - b.id
+                          )
+                          .map((s) => (
+                            <Link key={s.id} href={`/section/${s.section}`}>
+                              <DropdownMenuItem
+                                className="cursor-pointer"
+                                disabled={section === `${s.section}`}
+                              >
+                                Section {s.section}
+                              </DropdownMenuItem>
+                            </Link>
+                          ))}
+                      </>
+                    ) : (
+                      <>
+                        <Link href="/">
+                          <DropdownMenuItem
+                            className="cursor-not-allowed"
+                            disabled
+                          >
+                            Not Found
+                          </DropdownMenuItem>
+                        </Link>
+                      </>
+                    )}
+                  </ScrollArea>
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>

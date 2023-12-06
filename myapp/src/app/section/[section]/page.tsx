@@ -1,5 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton';
-import Section from '@/components/view/Section';
+import Section from '@/components/section/Section';
 import { Url } from '@/lib/Url';
 import { Metadata } from 'next';
 import React from 'react';
